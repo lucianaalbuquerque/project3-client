@@ -1,8 +1,8 @@
 import React from 'react'
 
-import StockistList from '../components/stockist/StockistList'
-import StockistAddForm from '../components/stockist/StockistAddForm'
-import StockistEditForm from '../components/stockist/StockistEditForm'
+import StockistList from '../components/stockists/StockistList'
+import StockistAddForm from '../components/stockists/StockistAddForm'
+import StockistEditForm from '../components/stockists/StockistEditForm'
 
 function StockistPage() {
   return (

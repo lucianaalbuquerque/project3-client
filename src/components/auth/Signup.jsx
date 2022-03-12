@@ -1,8 +1,6 @@
 import { useState } from "react";
-import { /* Link, */ Navigate, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
-
-const API_URL = "http://localhost:5005";
 
 function Signup() {
     const [email, setEmail] = useState("");
@@ -20,14 +18,11 @@ function Signup() {
         e.preventDefault()
         const requestBody = { email, password, name };
 
-        axios.post(`${API_URL}/api/signup`, requestBody)
+        axios.post(`${process.env.REACT_APP_API_URL}/signup`, requestBody)
       .then((response) => {
         navigate('/login');
       })
-      .catch((error) => {
-        const errorDescription = error.response.data.message;
-        setErrorMessage(errorDescription);
-      })
+      .catch((err) => console.log(err))
     }
 
   return (
@@ -43,7 +38,7 @@ function Signup() {
 
         { errorMessage && <p className="error-message">{errorMessage}</p> }
         <p>Already have account?</p>
-        <Navigate to={"/login"}> Login</Navigate>
+        <Link to={"/login"}> Login</Link>
 
     </div>
   )

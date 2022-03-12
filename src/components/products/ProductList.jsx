@@ -2,13 +2,13 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 
-const API_URL = "http://localhost:5005";
-
 function ProductsList() {
     const [products, setProducts] = useState([])
+    const storedToken = localStorage.getItem("authToken");
 
     const getAllProducts = () => {
-        axios.get(`${API_URL}/api/products`)
+        axios.get(`${process.env.REACT_APP_API_URL}/products`, 
+        { headers: { Authorization: `Bearer ${storedToken}` } } )
         .then((response) => setProducts(response.data))
         .catch((error) => console.log(error));
     }
