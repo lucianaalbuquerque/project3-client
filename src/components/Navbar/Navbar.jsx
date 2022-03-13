@@ -1,18 +1,17 @@
 import { useContext } from "react";                     
-import { AuthContext } from "../context/auth.context";
+import { AuthContext } from "../../context/auth.context";
 import { Link } from "react-router-dom";
+import './Navbar.css'
 
 function Navbar() {
   const { isLoggedIn, logoutUser, user } = useContext(AuthContext);
 
   return (
     <nav>
-        <Link to="/">Home</Link>
-
         {isLoggedIn && (
         <>
-          <span>{user && user.name}</span> 
-          <Link to="/products">My Info</Link>     
+          <Link to="/profile">Home</Link>
+          <Link to="/edituser">{user && user.name}</Link>    {/*  ESSA ROTA NAO EXISTE NEM A PAGE */}
           <button onClick={logoutUser}>Logout</button>
         </>
       )}

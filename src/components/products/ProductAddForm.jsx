@@ -14,7 +14,7 @@ function ProductAddForm() {
     const storedToken = localStorage.getItem('authToken');
 
     axios
-      .post(`${process.env.REACT_APP_API_URL}/api/product`, requestBody,
+      .post(`${process.env.REACT_APP_API_URL}/product`, requestBody,
         { headers: { Authorization: `Bearer ${storedToken}` } })
       .then((response) => {
         setName("");
