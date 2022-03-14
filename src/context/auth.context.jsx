@@ -28,7 +28,7 @@ function AuthProviderWrapper(props) {
         setIsLoggedIn(true);
         setIsLoading(false);
         setUser(user);      
-        console.log('auth.context.jsx user is authenticated')  
+        console.log('auth.context.jsx user is authenticated', response.data)  
       })
       .catch((error) => {
         setIsLoggedIn(false);
@@ -57,7 +57,7 @@ function AuthProviderWrapper(props) {
   }, []);
  
   return (
-    <AuthContext.Provider value={{ isLoggedIn, isLoading, user, storeToken, logoutUser }}>
+    <AuthContext.Provider value={{ isLoggedIn, isLoading, user, authenticateUser, storeToken, logoutUser }}>
       {props.children}
     </AuthContext.Provider>
   )

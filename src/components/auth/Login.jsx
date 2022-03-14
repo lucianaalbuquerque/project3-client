@@ -1,9 +1,10 @@
 import { useState, useContext } from "react";
 import axios from "axios";
-import { Link, Navigate, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from '../../context/auth.context'
 
 function Login() {
+  
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState(undefined);
@@ -14,26 +15,26 @@ function Login() {
  
   const handleEmail = (e) => setEmail(e.target.value);
   const handlePassword = (e) => setPassword(e.target.value);
- 
-  
-  const handleLoginSubmit = (e) => {
-    e.preventDefault();
 
+  const postLogin = async () => {
     const requestBody = {email, password};
 
-    axios.post(`${process.env.REACT_APP_API_URL}/login`, requestBody )
-    .then((response) => {
+    try { 
+     let response = await axios.post(`${process.env.REACT_APP_API_URL}/login`, requestBody )
+
       console.log('JWT token', response.data.authToken );
       storeToken(response.data.authToken);
-      authenticateUser();
-      /* navigate('/profile') */
-      <Navigate to="/profile" />
-    })
-    .catch((error) => {
-      const errorDescription = error.response/* .data.message */;
-      setErrorMessage(errorDescription);
-    });
-
+      authenticateUser(); 
+      
+    } catch (error) {
+      console.log(error)
+    }
+  }
+  
+  const handleLoginSubmit =  (e) => {
+    e.preventDefault();
+    postLogin()
+    navigate('/profile')
   };
   
   return (
