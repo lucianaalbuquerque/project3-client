@@ -11,7 +11,7 @@ function Navbar() {
         {isLoggedIn && (
         <>
           <Link to="/profile">Home</Link>
-          <Link to="/edituser">{user && user.name}</Link>    {/*  ESSA ROTA NAO EXISTE NEM A PAGE */}
+          <Link to="/profile/edit">{user && user.name}</Link>    {/*  ESSA ROTA NAO EXISTE NEM A PAGE */}
           <button onClick={logoutUser}>Logout</button>
         </>
       )}

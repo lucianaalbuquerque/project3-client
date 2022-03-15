@@ -1,21 +1,22 @@
 import { useState } from "react";
 import axios from "axios";
 
-function StockistAddForm() {
+function StockistAddForm(props) {
   const [name, setName] = useState('')
   const [description, setDescription] = useState('')
   const [commission, setCommission] = useState(0)
 
+  const storedToken = localStorage.getItem('authToken');
+
   const handleSubmit = (e) => {
     e.preventDefault();
- 
     const requestBody = { name, description, commission };
-    const storedToken = localStorage.getItem('authToken');
-
+    
     axios
       .post(`${process.env.REACT_APP_API_URL}/stockist`, requestBody,
         { headers: { Authorization: `Bearer ${storedToken}` } })
       .then((response) => {
+        props.refreshStockists()
         setName("");
         setDescription("");
         setCommission(0)
@@ -39,6 +40,7 @@ function StockistAddForm() {
 
         <button type="submit">Submit</button>
       </form>
+      
     </div>
   )
 }

@@ -14,6 +14,7 @@ import CatalogueView from './pages/CataloguePages/CatalogueView';
 import CatalogueCover from './pages/CataloguePages/CatalogueCover';
 import CataloguePage from './pages/CataloguePages/CataloguePage';
 import CatalogueReport from './pages/CataloguePages/CatalogueReport';
+import ProfileEditPage from './pages/ProfileEditPage/ProfileEditPage';
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
       <Routes>      
         <Route path="/" element={ <IsAnon> <HomePage /> </IsAnon>  } />
         <Route path="/profile" element={ <IsPrivate> <ProfilePage /> </IsPrivate>  } /> 
+        <Route path="/profile/edit" element={ <IsPrivate> <ProfileEditPage /> </IsPrivate>  } />
         <Route path="/products" element={ <IsPrivate> <ProductPage /> </IsPrivate> } />
         <Route path="/stockists" element={ <IsPrivate> <StockistPage /> </IsPrivate> } />
         <Route path="/catalogue/:catalogueId" element={ <IsPrivate> <CatalogueView /> </IsPrivate> } />

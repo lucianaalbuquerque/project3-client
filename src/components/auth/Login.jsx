@@ -25,7 +25,6 @@ function Login() {
       console.log('JWT token', response.data.authToken );
       storeToken(response.data.authToken);
       authenticateUser(); 
-      
     } catch (error) {
       console.log(error)
     }

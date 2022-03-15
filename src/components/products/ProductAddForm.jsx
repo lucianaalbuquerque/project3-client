@@ -1,7 +1,7 @@
 import { useState } from "react";
 import axios from "axios";
 
-function ProductAddForm() {
+function ProductAddForm(props) {
   const [name, setName] = useState('')
   const [description, setDescription] = useState('')
   const [price, setPrice] = useState(0)
@@ -41,7 +41,8 @@ function ProductAddForm() {
     { headers: { Authorization: `Bearer ${storedToken}` } })
       .then(res => {
         console.log('res.data.fileUrl', res.data.fileUrl)
-        setImageUrl(res.data.fileUrl)} )
+        setImageUrl(res.data.fileUrl)
+      })
       .catch(err => console.log('error uploading image:',err));
   }
 
@@ -57,6 +58,7 @@ function ProductAddForm() {
       .post(`${process.env.REACT_APP_API_URL}/product`, requestBody,
         { headers: { Authorization: `Bearer ${storedToken}` } })
       .then((response) => {
+        props.refreshProducts()
         setName("");
         setDescription("");
         setPrice(0);
