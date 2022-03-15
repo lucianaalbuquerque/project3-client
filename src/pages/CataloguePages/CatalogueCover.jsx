@@ -2,32 +2,33 @@ import { useState, useEffect } from "react";
 import axios from 'axios'
 import { Link, useParams } from "react-router-dom"; 
 
-function CatalogueCover() {
+function CatalogueCover(props) {
     const [cover, setCover] = useState(null)
-    const { catalogueId } = useParams(); 
+    const { pageId } = useParams(); 
     const storedToken = localStorage.getItem("authToken");
 
     const getCover = () => {
-        axios.post(`${process.env.REACT_APP_API_URL}/${catalogueId}/cover`, {},
+        axios.get(`${process.env.REACT_APP_API_URL}/cover/${pageId}`, 
         { headers: { Authorization: `Bearer ${storedToken}` } } )
         .then((response) => {
             setCover(response.data)
-            console.log('cover:', cover)
         })
         .catch((error) => console.log(error));
     }
 
     useEffect(() => {
         getCover();
-      }, [] );
+    }, [] );
 
   return (
     <div>
-        <h2>Cover</h2>
-        {cover.title}
-        <canvas id="myCanvas" width="248" height="350">
-        </canvas>
-        <Link to={`/${catalogueId}/about`}>Next Page</Link>
+        <h3>Cover</h3>
+        {cover && (<>
+            <p>{cover.title}</p>
+            <img src={cover.image} alt={cover.name} />
+            <Link to={`/catalogue/${cover.catalogueId}`}>Back</Link>
+        </>)}
+        
     </div>
   )
 }

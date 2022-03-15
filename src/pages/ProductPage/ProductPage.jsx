@@ -8,6 +8,9 @@ import ProductEditForm from '../../components/products/ProductEditForm'
 
 function ProductPage() {
   const [products, setProducts] = useState([])
+  const [addForm, setAddForm] = useState(true)
+  const [editForm, setEditForm] = useState(false)
+  const [productDetail, setProductDetail] = useState(null)
   const storedToken = localStorage.getItem("authToken");
 
   const getAllProducts = () => {
@@ -21,11 +24,27 @@ function ProductPage() {
     getAllProducts();
   }, [] );
 
+  const toogleForm = () => {
+    setAddForm(editForm)
+    setEditForm(addForm)
+  }
+
+  const getProductDetail = (productId) => {
+    axios.get(`${process.env.REACT_APP_API_URL}/product/${productId}`, 
+    { headers: { Authorization: `Bearer ${storedToken}` } } )
+    .then((response) => {
+      setProductDetail(response.data)
+      toogleForm()
+    })
+    .catch((error) => console.log(error));
+  }
+  
   return (
     <div className="ProductPage">
-        <ProductsList products={products} refreshProducts={getAllProducts} />
-        <ProductAddForm refreshProducts={getAllProducts} />
-        <ProductEditForm refreshProducts={getAllProducts} />
+        <ProductsList products={products} refreshProducts={getAllProducts} editProduct={getProductDetail} showEditForm={toogleForm} />
+        {editForm && <button onClick={toogleForm}>Add</button>} 
+        {addForm && <ProductAddForm refreshProducts={getAllProducts} />}
+        {editForm && <ProductEditForm product={productDetail} refreshProducts={getAllProducts} hideEditForm={toogleForm}/>}
     </div>
   )
 }

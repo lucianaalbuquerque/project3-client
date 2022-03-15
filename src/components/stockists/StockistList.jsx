@@ -27,9 +27,9 @@ function StockistList(props) {
         {stockists.map((stockist) => {
             return (
                 <div key={stockist._id} >
-              <Link to={`/stockist/${stockist._id}`}>
+              <button onClick={props.showEditForm}><Link to={`/stockist/${stockist._id}`}>
                 <h3>{stockist.name}</h3>
-              </Link>
+              </Link></button>
               <button onClick={() => deleteStockist(stockist._id)}>Delete</button>
             </div> 
             )

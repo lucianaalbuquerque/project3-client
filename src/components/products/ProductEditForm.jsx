@@ -1,45 +1,26 @@
-import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useState } from "react";
 import axios from "axios";
 
 function ProductEditForm(props) {
-  const [name, setName] = useState('')
-  const [description, setDescription] = useState('')
-  const [price, setPrice] = useState(0)
-  const [fileUpload, setFileUpload] = useState(null)
-  const [imageUrl, setImageUrl] = useState('')
-
+  const {product} = props
   const storedToken = localStorage.getItem('authToken');
-  const { productId } = useParams();      
 
-  useEffect(() => {
-    axios
-      .get(`${process.env.REACT_APP_API_URL}/product/${productId}`,
-      { headers: { Authorization: `Bearer ${storedToken}` } })
-      .then((response) => {
-        const oneProduct = response.data;
-        setName(oneProduct.name);
-        setDescription(oneProduct.description);
-        setPrice(oneProduct.Price);
-        setImageUrl(oneProduct.imageUrl)
-      })
-      .catch((error) => console.log(error));
-    
-  }, [productId]);
+  const [name, setName] = useState(product.name)
+  const [description, setDescription] = useState(product.description)
+  const [price, setPrice] = useState(product.price)
+  const [fileUpload, setFileUpload] = useState(null)
+  const [imageUrl, setImageUrl] = useState(product.imageUrl)
 
   function handleSubmit(e) {
     e.preventDefault();
    /*  uploadImage() */
     const requestBody = { name, description, price, imageUrl };
+    console.log(requestBody)
     axios
-      .put(`${process.env.REACT_APP_API_URL}/product/${productId}`, requestBody,
+      .put(`${process.env.REACT_APP_API_URL}/product/${product._id}`, requestBody,
         { headers: { Authorization: `Bearer ${storedToken}` } })
-      .then((response) => {
+      .then((response) => { console.log(response.data)
         props.refreshProducts()
-        setName("");
-        setDescription("");
-        setPrice(0);
-        setImageUrl('');
       })
       .catch((error) => console.log(error));
   }
@@ -47,7 +28,7 @@ function ProductEditForm(props) {
   return (
     <div>
       <h3>Edit Product</h3>
- 
+      <img src={product.imageUrl} alt={product} />
       <form onSubmit={handleSubmit}>
         <label>Name:</label>
         <input type="text" name="name" value={name} onChange={(e) => setName(e.target.value)} />

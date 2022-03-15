@@ -27,8 +27,9 @@ function App() {
         <Route path="/profile/edit" element={ <IsPrivate> <ProfileEditPage /> </IsPrivate>  } />
         <Route path="/products" element={ <IsPrivate> <ProductPage /> </IsPrivate> } />
         <Route path="/stockists" element={ <IsPrivate> <StockistPage /> </IsPrivate> } />
+
         <Route path="/catalogue/:catalogueId" element={ <IsPrivate> <CatalogueView /> </IsPrivate> } />
-        <Route path="/:catalogueId/cover" element={ <IsPrivate> <CatalogueCover/> </IsPrivate> } />
+        <Route path="/cover/:pageId" element={ <IsPrivate> <CatalogueCover /> </IsPrivate> } />
         <Route path="/page/:pageId" element={ <IsPrivate> <CataloguePage /> </IsPrivate> } />
         <Route path="/lastpage/:pageId" element={ <IsPrivate> <CatalogueReport /> </IsPrivate> } />
       </Routes>

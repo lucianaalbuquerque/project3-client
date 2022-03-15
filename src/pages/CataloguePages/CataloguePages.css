@@ -1,0 +1,28 @@
+.viewAllCatalogue {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin: 20px;
+}
+
+.viewAllPages {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin: 20px;
+}
+
+.pagina {
+    width:200px;
+    height: 200px;
+    border: 1px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
