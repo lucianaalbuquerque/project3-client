@@ -9,6 +9,7 @@ import CatalogueReport from './CatalogueReport'
 
 import CreateCoverBtn from '../../components/catalogues/CreateCoverBtn';
 import CreatePageBtn from '../../components/catalogues/CreatePageBtn';
+import CreateReportBtn from '../../components/catalogues/CreateReportBtn';
 
 function CatalogueView() {
   const [catalogue, setCatalogue] = useState(null)
@@ -79,8 +80,12 @@ function CatalogueView() {
           </div>
         
         <div className="pagina">
-          { report && <CatalogueReport />}
-          { !report && <button>Check Report</button> }
+          { report && 
+          <>
+          <CatalogueReport />
+          <Link to={`/report/${report}`}>Check</Link>
+          </>}
+          { !report && <CreateReportBtn catalogueId={catalogue._id}/> }
         </div>
       </div>
       <button onClick={() => deleteCatalogue(catalogue._id)}>Delete</button>

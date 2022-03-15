@@ -24,7 +24,7 @@ function CatalogueList() {
         { catalogueList.map((catalogue) => {
             return (
                 <div key={catalogue._id} >
-                <Link to={`/catalogue/${catalogue._id}`}> {/* //essa rota nao existe ainda!!! */}
+                <Link to={`/catalogue/${catalogue._id}`}> 
                     <h3>{catalogue.name}</h3>
                 </Link>
                 </div> 

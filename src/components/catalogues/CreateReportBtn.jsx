@@ -1,30 +1,28 @@
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
-function CreatePageBtn({catalogueId}) {
+function CreateReportBtn({catalogueId}) {
     const navigate = useNavigate();
 
     const handleCreate = (e) => {
         e.preventDefault();
         const storedToken = localStorage.getItem("authToken");
-        
-        axios.get(`${process.env.REACT_APP_API_URL}/addpage/${catalogueId}`, 
+
+        axios.get(`${process.env.REACT_APP_API_URL}/lastpage/${catalogueId}`, 
         { headers: { Authorization: `Bearer ${storedToken}` } } )
         .then((response) => {
-            navigate(`/page/${response.data._id}`) 
-//I create a page and receive the catalogue as response. Ive tried to use unshift instead of push but didnt worked
-            console.log('response from createPageBtn', response.data)
+            navigate(`/report/${response.data._id}`) 
         })
         .catch((error) => console.log(error));
     }
 
-  return (
+    return (
     <div>
         <form onSubmit={handleCreate}>
-        <button type="submit">Add Page</button>
+            <button type="submit">Check Report</button>
         </form>
     </div>
   )
 }
 
-export default CreatePageBtn
+export default CreateReportBtn
