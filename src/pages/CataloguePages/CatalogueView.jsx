@@ -2,10 +2,8 @@ import './CataloguePages.css'
 import axios from 'axios'
 import { Link, useNavigate, useParams } from "react-router-dom";
 import {useState, useEffect} from 'react'
-
-import CatalogueCover from './CatalogueCover'
-import CataloguePage from './CataloguePage'
-import CatalogueReport from './CatalogueReport'
+import { Paper } from '@mui/material';
+import Box from '@mui/material/Box';
 
 import CreateCoverBtn from '../../components/catalogues/CreateCoverBtn';
 import CreatePageBtn from '../../components/catalogues/CreatePageBtn';
@@ -13,13 +11,10 @@ import CreateReportBtn from '../../components/catalogues/CreateReportBtn';
 
 function CatalogueView() {
   const [catalogue, setCatalogue] = useState(null)
-  const [cover, setCover] = useState(null)
-  const [pages, setPages] = useState([])
-  const [report, setReport] = useState(null)
-  const [productList, setProductList] = useState([])
+  const [productList, setProductList] = useState([]) 
 
   const { catalogueId } = useParams()
-  console.log('catalogueId on catalogue view',catalogueId)
+
 
   const storedToken = localStorage.getItem("authToken");
   const navigate = useNavigate()
@@ -29,10 +24,6 @@ function CatalogueView() {
     { headers: { Authorization: `Bearer ${storedToken}` } })
       .then(res => {
         setCatalogue(res.data)
-        setCover(res.data.cover)
-        setPages(res.data.pages)
-        setReport(res.data.report)
-        console.log('catalogue', catalogue)
       })
       .catch(err => console.log(err));
   }
@@ -61,42 +52,52 @@ function CatalogueView() {
 
 
   return (
-    <div className='viewAllCatalogue'>
+    <div>
     { catalogue && 
     
       ( <>
         <h3>{catalogue.name} </h3>
-        <div className='viewAllPages'>
-        <div className="pagina">
-          { cover && <>
-          <CatalogueCover /> {/* catalogueId={catalogueId} coverId={cover} */}
-          <Link to={`/cover/${cover}`}>Edit</Link>
-          </>}
-          { !cover && <CreateCoverBtn catalogueId={catalogue._id}/> }
-        </div>
+        <Box
+      sx={{
+        display: 'flex',
+        flexWrap: 'wrap',
+        '& > :not(style)': {
+          m: 1,
+          width: 128,
+          height: 128,
+        },
+      }}
+    >
+          <Paper elevation={3}>
+            { catalogue.cover && <>
+              {catalogue.cover.title}
+            <Link to={`/cover/${catalogue.cover._id}`}>Edit</Link>
+            </>}
+            { !catalogue.cover && <CreateCoverBtn catalogueId={catalogue._id}/> }
+          </Paper>
         
-          { pages && <>
-          {pages.map((page) => {return (
-            <div className="pagina" key={page}>
-            <CataloguePage pageId={page} products={productList}/>
-            <Link to={`/page/${page}`}>Edit</Link>
-            </div>
-            )})}
+          { catalogue.pages && <>
+          { catalogue.pages.map((page) => {return (
+              <Paper elevation={3} key={page._id}>
+              {/* <CataloguePage pageId={page} products={productList}/> */}
+              <Link to={`/page/${page._id}`}>Edit</Link>
+              </Paper>
+            )}) }
             </>}
 
-          <div className="pagina">
+          <Paper elevation={3}>
             <CreatePageBtn catalogueId={catalogue._id}/>
-          </div>
+          </Paper>
         
-        <div className="pagina">
-          { report && 
+          <Paper elevation={3}>
+          { catalogue.report && 
           <>
-          <CatalogueReport />
-          <Link to={`/report/${report}`}>Check</Link>
+          <p>Report</p>
+          <Link to={`/report/${catalogue.report._id}`}>Check</Link>
           </>}
-          { !report && <CreateReportBtn catalogueId={catalogue._id} products={productList} /> }
-        </div>
-      </div>
+          { !catalogue.report && <CreateReportBtn catalogueId={catalogue._id} products={productList} /> }
+          </Paper>
+      </Box>
       <button onClick={() => deleteCatalogue(catalogue._id)}>Delete</button>
       </>)
 

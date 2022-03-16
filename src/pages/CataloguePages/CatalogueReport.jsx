@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import axios from 'axios'
 import { Link, useNavigate, useParams } from "react-router-dom"; 
+import Report from './Report'
 
 function CatalogueReport() {
   const [report, setReport] = useState(null)
@@ -24,7 +25,10 @@ function CatalogueReport() {
 
   return (
     <div>
-      <h3>Report</h3>
+      { report && (<>
+        <Report />
+      <Link to={`/catalogue/${report.catalogueId}`}>Back</Link>
+      </>)}
     </div>
   )
 }

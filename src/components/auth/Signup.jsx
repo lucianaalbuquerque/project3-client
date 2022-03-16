@@ -19,8 +19,8 @@ function Signup() {
         const requestBody = { email, password, name };
 
         axios.post(`${process.env.REACT_APP_API_URL}/signup`, requestBody)
-      .then((response) => {
-        navigate('/login');
+        .then((response) => {
+        navigate('/');
       })
       .catch((err) => console.log(err))
     }

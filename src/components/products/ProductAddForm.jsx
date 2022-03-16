@@ -13,15 +13,14 @@ function ProductAddForm(props) {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    
-      const uploadData = new FormData();
-      uploadData.append("file", imageUrl);
+    const uploadData = new FormData();
+    uploadData.append("file", imageUrl);
 
-      const upload = await axios.post(
-          `${process.env.REACT_APP_API_URL}/upload`,
-          uploadData,
-          { headers: { Authorization: `Bearer ${storedToken}` } }
-      );
+    const upload = await axios.post(
+        `${process.env.REACT_APP_API_URL}/upload`,
+        uploadData,
+        { headers: { Authorization: `Bearer ${storedToken}` } }
+    );
 
     const requestBody = { name, description, price, imageUrl: upload.data.fileUrl };
     console.log(' quando envio o addform:', { name, description, price, imageUrl })
