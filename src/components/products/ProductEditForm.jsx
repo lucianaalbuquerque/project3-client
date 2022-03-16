@@ -19,7 +19,8 @@ function ProductEditForm(props) {
     axios
       .put(`${process.env.REACT_APP_API_URL}/product/${product._id}`, requestBody,
         { headers: { Authorization: `Bearer ${storedToken}` } })
-      .then((response) => { console.log(response.data)
+      .then((response) => {
+        console.log(response.data)
         props.refreshProducts()
       })
       .catch((error) => console.log(error));

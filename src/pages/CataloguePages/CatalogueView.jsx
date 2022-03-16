@@ -16,6 +16,7 @@ function CatalogueView() {
   const [cover, setCover] = useState(null)
   const [pages, setPages] = useState([])
   const [report, setReport] = useState(null)
+  const [productList, setProductList] = useState([])
 
   const { catalogueId } = useParams()
   console.log('catalogueId on catalogue view',catalogueId)
@@ -36,8 +37,16 @@ function CatalogueView() {
       .catch(err => console.log(err));
   }
 
+  const getProductList = () => {
+    axios.get(`${process.env.REACT_APP_API_URL}/products`, 
+    { headers: { Authorization: `Bearer ${storedToken}` } } )
+    .then((response) => setProductList(response.data))
+    .catch((error) => console.log(error));
+  }
+
   useEffect(() => {                                   
     getCatalogue();
+    getProductList();
   }, []);
 
   const deleteCatalogue = (catalogueId) => {
@@ -69,7 +78,7 @@ function CatalogueView() {
           { pages && <>
           {pages.map((page) => {return (
             <div className="pagina" key={page}>
-            <CataloguePage pageId={page} />
+            <CataloguePage pageId={page} products={productList}/>
             <Link to={`/page/${page}`}>Edit</Link>
             </div>
             )})}
@@ -85,7 +94,7 @@ function CatalogueView() {
           <CatalogueReport />
           <Link to={`/report/${report}`}>Check</Link>
           </>}
-          { !report && <CreateReportBtn catalogueId={catalogue._id}/> }
+          { !report && <CreateReportBtn catalogueId={catalogue._id} products={productList} /> }
         </div>
       </div>
       <button onClick={() => deleteCatalogue(catalogue._id)}>Delete</button>

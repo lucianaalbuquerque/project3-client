@@ -1,41 +1,25 @@
-import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useState } from "react";
 import axios from "axios";
 
 function StockistEditForm(props) {
-  const [name, setName] = useState('')
-  const [description, setDescription] = useState('')
-  const [commission, setCommission] = useState(0)
-
+  console.log(props)
+  const { stockist } = props  
   const storedToken = localStorage.getItem('authToken');
-  const { stockistId } = useParams();    
 
-  useEffect(() => {
-    axios
-      .get(`${process.env.REACT_APP_API_URL}/stockist/${stockistId}`,
-      { headers: { Authorization: `Bearer ${storedToken}` } })
-      .then((response) => {
-        const oneStockist = response.data;
-        setName(oneStockist.name);
-        setDescription(oneStockist.description);
-        setCommission(oneStockist.commission);
-      })
-      .catch((error) => console.log(error));
-    
-  }, [stockistId]);
+  const [name, setName] = useState(stockist.name)
+  const [description, setDescription] = useState(stockist.description)
+  const [commission, setCommission] = useState(stockist.commission)
 
   function handleSubmit(e) {
     e.preventDefault();
 
     const requestBody = { name, description, commission };
     axios
-      .put(`${process.env.REACT_APP_API_URL}/stockist/${stockistId}`, requestBody,
+      .put(`${process.env.REACT_APP_API_URL}/stockist/${stockist._id}`, requestBody,
       { headers: { Authorization: `Bearer ${storedToken}` } })
       .then((response) => {
-        props.refreshProducts()
-        setName("");
-        setDescription("");
-        setCommission(0);
+        console.log(response.data)
+        props.refreshStockists()
       })
       .catch((error) => console.log(error));
   }

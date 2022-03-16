@@ -1,10 +1,12 @@
 import { useState, useEffect } from "react";
 import axios from 'axios'
 import { Link, useNavigate, useParams } from "react-router-dom"; 
+import ProductAddForm from "../../components/products/ProductAddForm";
 
 function CataloguePage() {
-  
+
   const [page, setPage] = useState(null)
+  const [allProducts, setAllProducts] = useState([])
   const { pageId } = useParams();  
   const storedToken = localStorage.getItem("authToken");
   const navigate = useNavigate()
@@ -19,8 +21,16 @@ function CataloguePage() {
     .catch((error) => console.log(error));
   }
 
+  const getAllProducts = () => {
+    axios.get(`${process.env.REACT_APP_API_URL}/products`, 
+    { headers: { Authorization: `Bearer ${storedToken}` } } )
+    .then((response) => setAllProducts(response.data))
+    .catch((error) => console.log(error));
+}
+
   useEffect(() => {
     getPage();
+    getAllProducts();
   }, [] );
 
   const deletePage = (pageId) => {
@@ -35,13 +45,14 @@ function CataloguePage() {
 
   return (
     <div>
-    CataloguePage
-    
-        {page && (<>
-            <p>{page.pageNumber}</p>
-            <Link to={`/catalogue/${page.catalogueId}`}>Back</Link>
-        </>)}
-        <button onClick={() => deletePage(page._id)}>Delete</button>
+      {page && (<>
+        <div className="catalogueLayout">
+{/*           <img src={productSelected.imageUrl} alt={productSelected.name} />
+          <p>{productSelected.name} - {productSelected.description}</p> */}
+        </div>
+          <Link to={`/catalogue/${page.catalogueId}`}>Back</Link>
+      </>)}
+      <button onClick={() => deletePage(page._id)}>Delete</button>
     </div>
   )
 }

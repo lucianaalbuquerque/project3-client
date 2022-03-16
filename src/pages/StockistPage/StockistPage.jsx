@@ -8,6 +8,9 @@ import StockistEditForm from '../../components/stockists/StockistEditForm'
 
 function StockistPage() {
   const [stockists, setStockists] = useState([])
+  const [addForm, setAddForm] = useState(true)
+  const [editForm, setEditForm] = useState(false)
+  const [stockistDetail, setStockistDetail] = useState(null)
   const storedToken = localStorage.getItem("authToken");
 
   const getAllStockists = () => {
@@ -21,11 +24,27 @@ function StockistPage() {
     getAllStockists();
   }, [] );
 
+  const toogleForm = () => {
+    setAddForm(editForm)
+    setEditForm(addForm)
+  }
+
+  const getStockistDetail = (stockistId) => {
+    axios.get(`${process.env.REACT_APP_API_URL}/stockist/${stockistId}`, 
+    { headers: { Authorization: `Bearer ${storedToken}` } } )
+    .then((response) => {
+      setStockistDetail(response.data)
+      toogleForm()
+    })
+    .catch((error) => console.log(error));
+  }
+
   return (
     <div className="stockistPage">
-        <StockistList stockists={stockists} refreshStockists={getAllStockists} />
-        <StockistAddForm refreshStockists={getAllStockists} />
-        <StockistEditForm />
+        <StockistList stockists={stockists} refreshStockists={getAllStockists} editStockist={getStockistDetail} showEditForm={toogleForm} />
+        {editForm && <button onClick={toogleForm}>Add</button>} 
+        {addForm && <StockistAddForm refreshStockists={getAllStockists} /> }
+        {editForm && <StockistEditForm stockist={stockistDetail} refreshStockists={getAllStockists} /> }
     </div>
   )
 }

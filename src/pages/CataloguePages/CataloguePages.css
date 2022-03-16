@@ -26,3 +26,12 @@
     justify-content: center;
     align-items: center;
 }
+
+.cataloguePage {
+    width: 800px;
+    height: 400px;
+    margin: 0 auto;
+    border: 1px solid black;
+    display: flex;
+    flex-direction: column;
+}

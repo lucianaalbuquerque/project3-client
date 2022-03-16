@@ -1,6 +1,5 @@
 import { useEffect } from "react";
 import axios from "axios";
-import { Link } from "react-router-dom";
 
 function StockistList(props) {
   const { stockists } = props;
@@ -9,6 +8,10 @@ function StockistList(props) {
   useEffect(() => {
     props.refreshStockists();
   }, [] );
+
+  const handleEdit = (stockistId) => {
+    props.editStockist(stockistId) 
+  } 
 
   const deleteStockist = (stockistId) => {
     axios
@@ -27,9 +30,7 @@ function StockistList(props) {
         {stockists.map((stockist) => {
             return (
                 <div key={stockist._id} >
-              <button onClick={props.showEditForm}><Link to={`/stockist/${stockist._id}`}>
-                <h3>{stockist.name}</h3>
-              </Link></button>
+              <button onClick={() => handleEdit(stockist._id)}><h3>{stockist.name}</h3></button>
               <button onClick={() => deleteStockist(stockist._id)}>Delete</button>
             </div> 
             )

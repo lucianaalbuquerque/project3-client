@@ -2,54 +2,56 @@ import { useState } from "react";
 import axios from "axios";
 
 function ProductAddForm(props) {
+
   const [name, setName] = useState('')
   const [description, setDescription] = useState('')
   const [price, setPrice] = useState(0)
-  const [fileUpload, setFileUpload] = useState(null)
+/*   const [selectedFile, setSelectedFile] = useState(null) */
   const [imageUrl, setImageUrl] = useState('')
 
   const storedToken = localStorage.getItem('authToken');
-
-  /* const uploadImage = (file) => {
-    axios.post(`${process.env.REACT_APP_API_URL}/product/upload`, file, 
+  
+  const uploadImage = (file) => {
+    return axios.post(`${process.env.REACT_APP_API_URL}/upload`, file, 
     { headers: { Authorization: `Bearer ${storedToken}` } })
       .then(res => res.data)
       .catch(err => console.log(err));
   }
 
-  const handleFileUpload = (e) => {
-    setImageUrl(e.target.files[0])
+  const handleUpload = (e) => {
+    console.log( '_________________ate aqui')
     const uploadData = new FormData();
-    uploadData.append("imageUrl", e.target.files[0])
+    uploadData.append("imageUrl", e.target.files[0]);
+    console.log('target', e.target.files[0])
     uploadImage(uploadData)
       .then(response => {
         setImageUrl(response.fileUrl);
-        console.log(imageUrl)
+        console.log(response.fileUrl)
       })
       .catch(err => console.log("Error while uploading the file: ", err));
-  } */
+  } 
 
-  const handleFileUpload = (e) => {
-    setFileUpload(e.target.files[0])
+ /* const imageSelected = (e) => {
+    setSelectedFile(e.target.files[0])
   }
 
-  const uploadImage = () => {
+   const handleUpload = () => {
     
     const uploadData = new FormData();
-    uploadData.append("fileUpload", fileUpload, fileUpload.name)
-    axios.post(`${process.env.REACT_APP_API_URL}/product/upload`, uploadData, 
+    uploadData.append("imageUrl", selectedFile, selectedFile.name)
+    axios.post(`${process.env.REACT_APP_API_URL}/upload`, uploadData, 
     { headers: { Authorization: `Bearer ${storedToken}` } })
       .then(res => {
         console.log('res.data.fileUrl', res.data.fileUrl)
         setImageUrl(res.data.fileUrl)
       })
       .catch(err => console.log('error uploading image:',err));
-  }
+  } */
 
   function handleSubmit(e) {
     e.preventDefault();
 
-    uploadImage()
+    handleUpload()
 
     const requestBody = { name, description, price, imageUrl };
     console.log(' quando envio o form:', { name, description, price, imageUrl })
@@ -82,7 +84,7 @@ function ProductAddForm(props) {
         <input type="number" name="price" value={price} onChange={(e) => setPrice(e.target.value)} />
 
         <label>Image:</label>
-        <input type="file" name="imageUrl" /*value={imageUrl}*/ onChange={(e) => handleFileUpload(e)} />
+        <input type="file" name="imageUrl" /*value={imageUrl}*/ onClick={(e) => handleUpload(e)} />
 
         <button type="submit">Submit</button>
       </form>
