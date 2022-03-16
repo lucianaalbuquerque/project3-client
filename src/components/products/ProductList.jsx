@@ -28,9 +28,13 @@ function ProductsList(props) {
       <h3>Products List</h3>
       {products.map((product) => {
         return (
-          <div key={product._id} >
-              <button onClick={() => handleEdit(product._id)}><h3>{product.name}</h3></button>
-              <button onClick={() => deleteProduct(product._id)}>Delete</button>
+          <div className="productCard" key={product._id} >
+              <img src={product.imageUrl} alt={product.name} />
+              <div className="productInfo"> 
+                <a href={'#'} onClick={() => handleEdit(product._id)}><h3>{product.name}</h3></a>
+                <p>{product.description}</p>
+                <button onClick={() => deleteProduct(product._id)}>Delete</button>
+              </div>
           </div> 
         )
       })}

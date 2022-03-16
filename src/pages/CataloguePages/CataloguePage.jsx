@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import axios from 'axios'
 import { Link, useNavigate, useParams } from "react-router-dom"; 
-import ProductAddForm from "../../components/products/ProductAddForm";
+import SearchProductsBtn from "../../components/catalogues/SearchProductsBtn";
 
 function CataloguePage() {
 
@@ -47,6 +47,7 @@ function CataloguePage() {
     <div>
       {page && (<>
         <div className="catalogueLayout">
+        <SearchProductsBtn />
 {/*           <img src={productSelected.imageUrl} alt={productSelected.name} />
           <p>{productSelected.name} - {productSelected.description}</p> */}
         </div>

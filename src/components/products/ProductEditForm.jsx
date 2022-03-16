@@ -8,14 +8,24 @@ function ProductEditForm(props) {
   const [name, setName] = useState(product.name)
   const [description, setDescription] = useState(product.description)
   const [price, setPrice] = useState(product.price)
-  const [fileUpload, setFileUpload] = useState(null)
+  const [handleImage, setHandleImage] = useState('')
   const [imageUrl, setImageUrl] = useState(product.imageUrl)
-
-  function handleSubmit(e) {
+  
+  const handleSubmit = async (e) => {
     e.preventDefault();
-   /*  uploadImage() */
+    
+    //upload image
+    if (handleImage) {
+    const uploadData = new FormData();
+    uploadData.append("file", handleImage);
+
+    const upload = await axios.post(`${process.env.REACT_APP_API_URL}/upload`, uploadData,
+    { headers: { Authorization: `Bearer ${storedToken}` } } )
+    setImageUrl(upload.data.fileUrl)
+    }
+
     const requestBody = { name, description, price, imageUrl };
-    console.log(requestBody)
+    console.log( handleImage)
     axios
       .put(`${process.env.REACT_APP_API_URL}/product/${product._id}`, requestBody,
         { headers: { Authorization: `Bearer ${storedToken}` } })
@@ -41,7 +51,7 @@ function ProductEditForm(props) {
         <input type="number" name="price" value={price} onChange={(e) => setPrice(e.target.value)} />
 
         <label>Image:</label>
-        <input type="file" name="imageUrl" /*value={imageUrl} onChange={(e) => handleFileUpload(e)}*/ />
+        <input type="file" name="imageUrl" onChange={(e) => setHandleImage(e.target.files[0])} />
 
         <button type="submit">Submit</button>
       </form>
