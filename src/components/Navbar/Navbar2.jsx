@@ -49,11 +49,11 @@ export default function MenuListComposition() {
   }, [open]);
 
   return (
-    <>
+    <div className='navbar'>
     {isLoggedIn && (
         <>
     <Stack direction="row" spacing={2}>
-      <div className='navbar'>
+      <div>
         <Button
           ref={anchorRef}
           id="composition-button"
@@ -100,6 +100,6 @@ export default function MenuListComposition() {
       </div>
     </Stack>
     </>)}
-    </>
+    </div>
   );
 }

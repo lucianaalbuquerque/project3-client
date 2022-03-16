@@ -45,7 +45,7 @@ function CataloguePage() {
 
   return (
     <div className="cataloguePage">
-    <SearchBtn products={productList} pageId={pageId} refreshPage={getPage} />
+    <SearchBtn products={productList} pageId={pageId} catalogueId={page.catalogueId} refreshPage={getPage} />
       {page && (<>
           {page.products.map((product) => { return (
             <p key={product._id}>{product.name}</p>

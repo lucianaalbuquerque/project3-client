@@ -5,8 +5,8 @@ import axios from 'axios';
 
 function SearchBtn(props) {
     const [value, setValue] = useState(null);
-    const {products} = props
-    const {pageId} = props
+    const {pageId, catalogueId, products} = props
+
     const storedToken = localStorage.getItem("authToken");
     
     const defaultProps = {
@@ -15,8 +15,9 @@ function SearchBtn(props) {
     };
 
     const addProduct = async () => {
+        const body = {value, catalogueId}
         try {
-            const response = await axios.put(`${process.env.REACT_APP_API_URL}/addproduct/${pageId}`, value,
+            const response = await axios.put(`${process.env.REACT_APP_API_URL}/addproduct/${pageId}`, body,
             { headers: { Authorization: `Bearer ${storedToken}` } });
             props.refreshPage()
         } catch (error) {
