@@ -21,14 +21,14 @@ function CatalogueCover(props) {
     }, [] );
 
   return (
-    <div>
-        <h3>Cover</h3>
+    <div className="cataloguePage">
+        <div className='pageLayout'>
         {cover && (<>
             <p>{cover.title}</p>
             <img src={cover.image} alt={cover.name} />
             <Link to={`/catalogue/${cover.catalogueId}`}>Back</Link>
         </>)}
-        
+        </div>
     </div>
   )
 }

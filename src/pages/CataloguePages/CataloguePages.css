@@ -1,11 +1,11 @@
-.viewAllCatalogue {
+.catalogueView {
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
     gap: 10px;
-    margin: 20px;
+    margin: 50px;
 }
 
 .viewAllPages {
@@ -28,14 +28,81 @@
 }
 
 .cataloguePage {
-    width: 800px;
-    height: 400px;
-    margin: 0 auto;
-    border: 1px solid black;
+    margin: 30px;
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
-.catalogueLayout {
-    
+.pageLayout {
+    width: 800px;
+    height: 400px;
+    margin: 10 auto;
+    display: flex;
+    flex-direction: row;
+    background-color: white;
+    box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 2px, rgba(0, 0, 0, 0.07) 0px 2px 4px, rgba(0, 0, 0, 0.07) 0px 4px 8px, rgba(0, 0, 0, 0.07) 0px 8px 16px, rgba(0, 0, 0, 0.07) 0px 16px 32px, rgba(0, 0, 0, 0.07) 0px 32px 64px;
+}
+
+.productLayout {
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+    margin: 20px auto;
+}
+
+.productInfo {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: start;
+    margin: 10px;
+}
+
+.pageLayout img {
+    height: 350px;
+    width: auto;
+    margin: 10 auto;
+}
+
+.previewPage {
+    width: 160px;
+    height: 120px;
+    margin: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: white;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.previewCatalogue {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.layoutButtons {
+    width: 800px;
+    margin: 10 auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+.searchBar {
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+}
+
+.reportPage {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 50px auto;
 }

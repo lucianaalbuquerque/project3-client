@@ -41,10 +41,14 @@ function StockistPage() {
 
   return (
     <div className="stockistPage">
+        <div>
         <StockistList stockists={stockists} refreshStockists={getAllStockists} editStockist={getStockistDetail} showEditForm={toogleForm} />
-        {editForm && <button onClick={toogleForm}>Add</button>} 
-        {addForm && <StockistAddForm refreshStockists={getAllStockists} /> }
-        {editForm && <StockistEditForm stockist={stockistDetail} refreshStockists={getAllStockists} /> }
+        {editForm && <button onClick={toogleForm}>Add New</button>} 
+        </div>
+        <div>
+          {addForm && <StockistAddForm refreshStockists={getAllStockists} /> }
+          {editForm && <StockistEditForm stockist={stockistDetail} refreshStockists={getAllStockists} /> } 
+      </div>
     </div>
   )
 }

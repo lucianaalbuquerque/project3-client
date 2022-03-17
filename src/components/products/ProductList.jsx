@@ -1,3 +1,7 @@
+import IconButton from '@mui/material/IconButton';
+import DeleteIcon from '@mui/icons-material/Delete';
+import Tooltip from '@mui/material/Tooltip';
+
 import { useEffect } from "react";
 import axios from "axios";
 
@@ -25,15 +29,18 @@ function ProductsList(props) {
 
   return (
     <div>
-      <h3>Products List</h3>
       {products.map((product) => {
         return (
           <div className="productCard" key={product._id} >
               <img src={product.imageUrl} alt={product.name} />
               <div className="productInfo"> 
                 <a href={'#'} onClick={() => handleEdit(product._id)}><h3>{product.name}</h3></a>
-                <p>{product.description}</p>
-                <button onClick={() => deleteProduct(product._id)}>Delete</button>
+                <p>{product.price} €</p>
+                <Tooltip title="Add" placement="rigth">
+                <IconButton onClick={() => deleteProduct(product._id)} aria-label="delete">
+                  <DeleteIcon />
+                </IconButton>
+                </Tooltip>
               </div>
           </div> 
         )

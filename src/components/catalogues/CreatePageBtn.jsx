@@ -21,7 +21,7 @@ function CreatePageBtn({catalogueId}) {
   return (
     <div>
         <form onSubmit={handleCreate}>
-        <button type="submit">Add Page</button>
+        <button type="submit">+</button>
         </form>
     </div>
   )

@@ -1,3 +1,6 @@
+import KeyboardBackspaceIcon from '@mui/icons-material/KeyboardBackspace';
+import IconButton from '@mui/material/IconButton';
+
 import { useState, useEffect } from "react";
 import axios from 'axios'
 import { Link, useNavigate, useParams } from "react-router-dom"; 
@@ -24,10 +27,13 @@ function CatalogueReport() {
 
 
   return (
-    <div>
+    <div className="reportPage">
       { report && (<>
         <Report />
-      <Link to={`/catalogue/${report.catalogueId}`}>Back</Link>
+      
+        <IconButton >
+          <Link to={`/catalogue/${report.catalogueId}`}><KeyboardBackspaceIcon /></Link>
+        </IconButton>
       </>)}
     </div>
   )

@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
+import TextField from '@mui/material/TextField';
 
 function Signup() {
     const [email, setEmail] = useState("");
@@ -30,9 +31,9 @@ function Signup() {
         <h3>Signup</h3>
         
         <form onSubmit={handleSignupSubmit}> 
-            <input type="email" name="email" value={email} onChange={handleEmail} placeholder="email" />
-            <input type="password" name="password" value={password} onChange={handlePassword} placeholder="password" />
-            <input type="text" name="name" value={name} onChange={handleName} placeholder="Brand name" />
+            <TextField size="small"  type="email" name="email" value={email} onChange={handleEmail} placeholder="email" />
+            <TextField size="small"  type="password" name="password" value={password} onChange={handlePassword} placeholder="password" />
+            <TextField size="small"  type="text" name="name" value={name} onChange={handleName} placeholder="Brand name" />
             <button type="submit">Sign Up</button>
         </form>
 

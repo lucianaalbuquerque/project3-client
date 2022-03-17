@@ -2,6 +2,7 @@ import { useState, useContext } from "react";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from '../../context/auth.context'
+import TextField from '@mui/material/TextField';
 
 function Login() {
   
@@ -42,10 +43,10 @@ function Login() {
  
       <form onSubmit={handleLoginSubmit}>
         <label>Email:</label>
-        <input type="email" name="email" value={email} onChange={handleEmail}/>
+        <TextField size="small"  type="email" name="email" value={email} onChange={handleEmail}/>
  
         <label>Password:</label>
-        <input type="password" name="password" value={password} onChange={handlePassword}/>
+        <TextField size="small"  type="password" name="password" value={password} onChange={handlePassword}/>
  
         <button type="submit">Login</button>
       </form>

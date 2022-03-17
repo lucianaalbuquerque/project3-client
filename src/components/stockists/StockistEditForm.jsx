@@ -1,5 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
+import TextField from '@mui/material/TextField';
 
 function StockistEditForm(props) {
   console.log(props)
@@ -28,13 +29,13 @@ function StockistEditForm(props) {
     <div>
       <form onSubmit={handleSubmit}>
           <label>Name:</label>
-          <input type="text" name="name" value={name} onChange={(e) => setName(e.target.value)} />
+          <TextField size="small" type="text" name="name" value={name} onChange={(e) => setName(e.target.value)} />
   
           <label>Description:</label>
-          <textarea type="text" name="description" value={description} onChange={(e) => setDescription(e.target.value)} />
+          <TextField size="small"  type="text" name="description" value={description} onChange={(e) => setDescription(e.target.value)} />
 
           <label>Commission:</label>
-          <input type="number" name="commission" value={commission} onChange={(e) => setCommission(e.target.value)} />
+          <TextField size="small"  type="number" name="commission" value={commission} onChange={(e) => setCommission(e.target.value)} />
 
           <button type="submit">Submit</button>
         </form>

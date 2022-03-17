@@ -5,7 +5,7 @@ import axios from 'axios';
 
 function SearchBtn(props) {
     const [value, setValue] = useState(null);
-    const {pageId, catalogueId, products} = props
+    const {pageId, catalogueId, products, closeSearch} = props
 
     const storedToken = localStorage.getItem("authToken");
     
@@ -19,6 +19,7 @@ function SearchBtn(props) {
         try {
             const response = await axios.put(`${process.env.REACT_APP_API_URL}/addproduct/${pageId}`, body,
             { headers: { Authorization: `Bearer ${storedToken}` } });
+            closeSearch();
             props.refreshPage()
         } catch (error) {
             console.log(error)

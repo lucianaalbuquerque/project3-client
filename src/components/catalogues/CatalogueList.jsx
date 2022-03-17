@@ -20,7 +20,7 @@ function CatalogueList() {
 
   return (
     <div>
-        <h3>Catalogues List</h3>
+        <h3>Catalogues</h3>
         { catalogueList.map((catalogue) => {
             return (
                 <div key={catalogue._id} >

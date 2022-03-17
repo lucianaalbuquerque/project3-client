@@ -20,7 +20,7 @@ function CreateCoverBtn({catalogueId}) {
   return (
     <div>
         <form onSubmit={handleCreate}>
-        <button type="submit">Create cover</button>
+        <button type="submit">Add Cover</button>
         </form>
     </div>
   )
