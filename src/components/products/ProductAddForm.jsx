@@ -7,7 +7,6 @@ function ProductAddForm(props) {
   const [name, setName] = useState('')
   const [description, setDescription] = useState('')
   const [price, setPrice] = useState(0)
-  const [costPrice, setCostPrice] = useState(0)
   const [ref, setRef] = useState(0)
   const [imageUrl, setImageUrl] = useState('')
 
@@ -25,8 +24,8 @@ function ProductAddForm(props) {
         { headers: { Authorization: `Bearer ${storedToken}` } }
     );
 
-    const requestBody = { name, description, price, imageUrl: upload.data.fileUrl };
-    console.log(' quando envio o addform:', { name, description, price, imageUrl })
+    const requestBody = { name, description, ref,  price, imageUrl: upload.data.fileUrl };
+    console.log(' quando envio o addform:', { name, description, ref, price, imageUrl })
 
     axios
       .post(`${process.env.REACT_APP_API_URL}/product`, requestBody,
@@ -36,7 +35,6 @@ function ProductAddForm(props) {
         setName("");
         setDescription("");
         setPrice(0);
-        setCostPrice(0);
         setRef(0);
         setImageUrl('');
       })
@@ -53,9 +51,6 @@ function ProductAddForm(props) {
  
         <label>Description:</label>
         <TextField size="small"  type="text" name="description" value={description} onChange={(e) => setDescription(e.target.value)} />
-
-        <label>Cost Price:</label>
-        <TextField size="small" type="number" name="costPrice" value={costPrice} onChange={(e) => setCostPrice(e.target.value)} />
 
         <label>Retail Price:</label>
         <TextField size="small" type="number" name="price" value={price} onChange={(e) => setPrice(e.target.value)} />

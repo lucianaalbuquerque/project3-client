@@ -1,6 +1,5 @@
 import IconButton from '@mui/material/IconButton';
 import DeleteIcon from '@mui/icons-material/Delete';
-import Tooltip from '@mui/material/Tooltip';
 
 import { useEffect } from "react";
 import axios from "axios";
@@ -35,11 +34,11 @@ function StockistList(props) {
             return (
                 <div key={stockist._id} >
               <button onClick={() => handleEdit(stockist._id)}><h3>{stockist.name}</h3></button>
-              <Tooltip title="Add" placement="rigth">
+
                 <IconButton onClick={() => deleteStockist(stockist._id)} aria-label="delete">
                   <DeleteIcon />
                 </IconButton>
-              </Tooltip>
+
             </div> 
             )
         })}

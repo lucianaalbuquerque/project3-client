@@ -31,7 +31,7 @@ function App() {
         <Route path="/catalogue/:catalogueId" element={ <IsPrivate> <CatalogueView /> </IsPrivate> } />
         <Route path="/cover/:pageId" element={ <IsPrivate> <CatalogueCover /> </IsPrivate> } />
         <Route path="/page/:pageId" element={ <IsPrivate> <CataloguePage /> </IsPrivate> } />
-        <Route path="/report/:pageId" element={ <IsPrivate> <CatalogueReport /> </IsPrivate> } />
+        <Route path="/:catalogueId/report/:pageId" element={ <IsPrivate> <CatalogueReport /> </IsPrivate> } />
       </Routes>
     </div>
   );

@@ -9,7 +9,6 @@ function ProductEditForm(props) {
   const [name, setName] = useState(product.name)
   const [description, setDescription] = useState(product.description)
   const [price, setPrice] = useState(product.price)
-  const [costPrice, setCostPrice] = useState(product.costPrice)
   const [ref, setRef] = useState(product.price)
   const [handleImage, setHandleImage] = useState('')
   const [imageUrl, setImageUrl] = useState(product.imageUrl)
@@ -27,7 +26,7 @@ function ProductEditForm(props) {
     setImageUrl(upload.data.fileUrl)
     }
 
-    const requestBody = { name, description, price, costPrice, ref, imageUrl };
+    const requestBody = { name, description, price, ref, imageUrl };
     console.log( handleImage)
     axios
       .put(`${process.env.REACT_APP_API_URL}/product/${product._id}`, requestBody,
@@ -35,6 +34,7 @@ function ProductEditForm(props) {
       .then((response) => {
         console.log(response.data)
         props.refreshProducts()
+        props.toogleForm()
       })
       .catch((error) => console.log(error));
   }
@@ -49,9 +49,6 @@ function ProductEditForm(props) {
 
         <label>Description:</label>
         <TextField size="small"  type="text" name="description" value={description} onChange={(e) => setDescription(e.target.value)} />
-
-        <label>Cost Price:</label>
-        <TextField size="small" type="number" name="costPrice" value={costPrice} onChange={(e) => setCostPrice(e.target.value)} />
 
         <label>Retail Price:</label>
         <TextField size="small" type="number" name="price" value={price} onChange={(e) => setPrice(e.target.value)} />

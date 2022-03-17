@@ -41,10 +41,12 @@ function ProductPage() {
   
   return (
     <div className="ProductPage">
+      <div>
         <ProductsList products={products} refreshProducts={getAllProducts} editProduct={getProductDetail} showEditForm={toogleForm} />
-        {editForm && <button onClick={toogleForm}>Add</button>} 
+        {editForm && <button onClick={toogleForm}>+</button>} 
+      </div>
         {addForm && <ProductAddForm refreshProducts={getAllProducts} />}
-        {editForm && <ProductEditForm product={productDetail} refreshProducts={getAllProducts} hideEditForm={toogleForm}/>}
+        {editForm && <ProductEditForm product={productDetail} refreshProducts={getAllProducts} toogleForm={toogleForm}/>}
     </div>
   )
 }

@@ -14,7 +14,8 @@ import CreateReportBtn from '../../components/catalogues/CreateReportBtn';
 function CatalogueView() {
   const [catalogue, setCatalogue] = useState(null)
   const [productList, setProductList] = useState([]) 
-  const [title, setTitle] = useState('Title')
+  const [title, setTitle] = useState("")
+  const [editTitle, setEditTitle] = useState(false)
 
   const { catalogueId } = useParams()
 
@@ -26,6 +27,7 @@ function CatalogueView() {
     { headers: { Authorization: `Bearer ${storedToken}` } })
       .then(res => {
         setCatalogue(res.data)
+        setTitle(res.data.name)
       })
       .catch(err => console.log(err));
   }
@@ -52,13 +54,41 @@ function CatalogueView() {
     .catch((err) => console.log(err)); 
   };
 
+  const handleFormSubmit = async (e) => {
+    e.preventDefault();
+    const requestBody = {name: title}
+    axios
+    .put(`${process.env.REACT_APP_API_URL}/catalogue/${catalogueId}`, requestBody,
+    { headers: { Authorization: `Bearer ${storedToken}` } } )
+    .then((res) => { 
+      console.log(res.data) 
+    })
+    .catch((err) => console.log(err)); 
+
+    setEditTitle(false)
+  }
+
 
   return (
     <div>
     { catalogue && 
     
       ( <div className='catalogueView'>
-        <a href='#'>{catalogue.name} </a>
+        {!editTitle ? (
+          <>
+            <h3>{catalogue.name}</h3>
+            <button onClick={() => setEditTitle(true)}>Edit</button>
+          </>
+        ):(
+          <>
+            <form onSubmit={handleFormSubmit}>
+              <input type="text" value={title} onChange={(e) => setTitle(e.target.value)}></input>
+              <button type="submit">Save</button>
+            </form>
+          </>
+        )}
+
+
         <div className='previewCatalogue'>
           <div className='previewPage'>
             { catalogue.cover && <>
@@ -84,7 +114,7 @@ function CatalogueView() {
           <div className='previewPage'>
           { catalogue.report && 
           <>
-          <Link to={`/report/${catalogue.report._id}`}>Check Report</Link>
+          <Link to={`/${catalogueId}/report/${catalogue.report._id}`}>Products Summary</Link>
           </>}
           { !catalogue.report && <CreateReportBtn catalogueId={catalogue._id} products={productList} /> }
           </div>
