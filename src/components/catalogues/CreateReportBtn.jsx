@@ -11,7 +11,7 @@ function CreateReportBtn({catalogueId}) {
         axios.get(`${process.env.REACT_APP_API_URL}/lastpage/${catalogueId}`, 
         { headers: { Authorization: `Bearer ${storedToken}` } } )
         .then((response) => {
-            navigate(`/report/${response.data._id}`) 
+            navigate(`/${catalogueId}/report/${response.data._id}`) 
         })
         .catch((error) => console.log(error));
     }

@@ -1,6 +1,6 @@
 import IconButton from '@mui/material/IconButton';
 import DeleteIcon from '@mui/icons-material/Delete';
-
+import TextField from '@mui/material/TextField';
 
 import './CataloguePages.css'
 import axios from 'axios'
@@ -62,9 +62,9 @@ function CatalogueView() {
     { headers: { Authorization: `Bearer ${storedToken}` } } )
     .then((res) => { 
       console.log(res.data) 
+      setTitle(res.data);
     })
     .catch((err) => console.log(err)); 
-
     setEditTitle(false)
   }
 
@@ -75,14 +75,14 @@ function CatalogueView() {
     
       ( <div className='catalogueView'>
         {!editTitle ? (
-          <>
+          <div className='formTitle'>
             <h3>{catalogue.name}</h3>
             <button onClick={() => setEditTitle(true)}>Edit</button>
-          </>
+          </div>
         ):(
           <>
-            <form onSubmit={handleFormSubmit}>
-              <input type="text" value={title} onChange={(e) => setTitle(e.target.value)}></input>
+            <form className='formTitle' onSubmit={handleFormSubmit}>
+              <TextField size="small"  type="text" value={title} onChange={(e) => setTitle(e.target.value)}></TextField>
               <button type="submit">Save</button>
             </form>
           </>
@@ -101,7 +101,6 @@ function CatalogueView() {
           { catalogue.pages && <>
           { catalogue.pages.map((page) => {return (
               <div className='previewPage' key={page._id}>
-              {/* <CataloguePage pageId={page} products={productList}/> */}
               <Link to={`/page/${page._id}`}>Edit</Link>
               </div>
             )}) }

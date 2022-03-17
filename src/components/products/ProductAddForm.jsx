@@ -26,7 +26,7 @@ function ProductAddForm(props) {
 
     const requestBody = { name, description, ref,  price, imageUrl: upload.data.fileUrl };
     console.log(' quando envio o addform:', { name, description, ref, price, imageUrl })
-
+  
     axios
       .post(`${process.env.REACT_APP_API_URL}/product`, requestBody,
         { headers: { Authorization: `Bearer ${storedToken}` } })
