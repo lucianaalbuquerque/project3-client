@@ -32,7 +32,7 @@ function ProductsList(props) {
         return (
           <div className="productCard" key={product._id} >
               <img src={product.imageUrl} alt={product.name} />
-              <div className="productInfo"> 
+              <div className="productCardTxt"> 
                 <a href={'#'} onClick={() => handleEdit(product._id)}><h3>{product.name}</h3></a>
                 <p>{product.price} €</p>
 

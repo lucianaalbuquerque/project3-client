@@ -12,11 +12,14 @@ function ProfilePage() {
         <CatalogueList />
         <CreateCatalogueBtn />
       </div>
+      <div className='home2'>
       <div className="cardsHome">
         <Link to="/products">See all Products</Link>
+      </div>
+      <div className="cardsHome">
         <Link to="/stockists">See all Stockists</Link>
       </div>
-      
+      </div>
     </div>
   )
 }

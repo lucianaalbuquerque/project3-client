@@ -10,7 +10,7 @@ function Report(props) {
   const {productList, commission} = props 
 
   let rows = productList.map((product) => {
-    let salePrice = (product.price - (product.price*(100 - commission))/100).toFixed(2)
+    let salePrice = (product.price - (product.price*commission)/100).toFixed(2)
     return ({ name: product.name, ref: product.ref, salePrice: salePrice, commission, price: product.price })
   })
 

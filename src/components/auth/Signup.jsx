@@ -28,7 +28,7 @@ function Signup() {
 
   return (
     <div>
-        <h3>Signup</h3>
+        <h2>Signup</h2>
         
         <form onSubmit={handleSignupSubmit}> 
             <TextField size="small"  type="email" name="email" value={email} onChange={handleEmail} placeholder="email" />

@@ -10,18 +10,26 @@ import './CataloguePages.css'
 function CatalogueCover() {
     const [cover, setCover] = useState(null)
     const [image, setImage] = useState('')
-/*     const [imageSelected, setImageSelected] = useState(false) */
+    const [imageSelected, setImageSelected] = useState(false)
     const { pageId } = useParams(); 
-    console.log('imageSelected',image,'cover', cover)
+    
     const storedToken = localStorage.getItem("authToken");
 
-    console.log(cover)
+    console.log('imageSelected',image,'cover', cover)
+
+ /*    const checkImage = () => {
+        if (cover.image) {
+            console.log(cover.image)
+          setImageSelected(true) 
+        }
+    }  */
 
     const getCover = () => {
         axios.get(`${process.env.REACT_APP_API_URL}/cover/${pageId}`, 
         { headers: { Authorization: `Bearer ${storedToken}` } } )
         .then((response) => {
             setCover(response.data)
+            setImage(response.data.image)
         })
         .catch((error) => console.log(error));
     }
@@ -33,7 +41,7 @@ function CatalogueCover() {
     const handleSubmit = async (e) => {
         try {
             e.preventDefault();
-           /*  setImageSelected(true) */
+           
             const uploadData = new FormData();
             uploadData.append("file", image);
     
@@ -49,7 +57,9 @@ function CatalogueCover() {
             await axios
             .put(`${process.env.REACT_APP_API_URL}/cover/${pageId}`, requestBody,
                 { headers: { Authorization: `Bearer ${storedToken}` } })
-            .then((response) => {
+            .then((response) => { 
+                console.log(response.data)
+                if (response.data.image) {setImageSelected(true)}
           })
         } catch (error) {
             console.log(error)
@@ -62,9 +72,8 @@ function CatalogueCover() {
         {cover && (
             <>
             <div className='coverLayout'>
-                <h2 className="coverTitle">{cover.catalogueId.name}</h2>
                 
-                { image ? 
+                { cover.image ? 
                 <>
                     <div className="imageCover" style={{ backgroundImage: `url(${cover.image})` }}></div>
                 </> : <>
@@ -73,6 +82,7 @@ function CatalogueCover() {
                         <button type="submit">Submit</button>
                     </form>
                 </>}
+                <h2 className="coverTitle">{cover.catalogueId.name}</h2>
             </div>
 
             <IconButton >

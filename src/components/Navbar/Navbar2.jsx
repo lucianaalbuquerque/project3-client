@@ -61,6 +61,7 @@ export default function MenuListComposition() {
           aria-expanded={open ? 'true' : undefined}
           aria-haspopup="true"
           onClick={handleToggle}
+          className='NavbarTxt'
         >
           {user && user.name}
         </Button>

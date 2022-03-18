@@ -28,8 +28,7 @@ function StockistList(props) {
   }; 
 
   return (
-    <div>
-        <h3>Stockist List</h3>
+    <div className="stockistList">
         {stockists.map((stockist) => {
             return (
                 <div key={stockist._id} >
@@ -38,7 +37,6 @@ function StockistList(props) {
                 <IconButton onClick={() => deleteStockist(stockist._id)} aria-label="delete">
                   <DeleteIcon />
                 </IconButton>
-
             </div> 
             )
         })}

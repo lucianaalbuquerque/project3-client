@@ -14,7 +14,7 @@ function CataloguePage() {
   const { pageId } = useParams();
   const storedToken = localStorage.getItem("authToken");
   const navigate = useNavigate();
-
+ 
   const getPage = () => {
     axios
       .get(`${process.env.REACT_APP_API_URL}/page/${pageId}`, {
@@ -70,9 +70,9 @@ function CataloguePage() {
             <img src={product.imageUrl} alt={product.name} />
 
               <div className='productInfo'>
-                <h4>{product.name}</h4>
+                <h3>{product.name}</h3>
                 <p>{product.description}</p>
-                <p>{product.ref}</p>
+                <p>{product.ref} - {product.price} €</p>
               </div>
             </div>)
 

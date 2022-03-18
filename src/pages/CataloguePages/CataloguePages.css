@@ -136,10 +136,10 @@
 }
 
 .imageCover {
+    background-size: cover;
+    width: 800px;
     height: 400px;
-    width: auto;
-    margin: 10 auto;
-    
+    background-repeat: no-repeat;
 }
 
 .coverTitle {

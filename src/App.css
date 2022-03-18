@@ -1,6 +1,27 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,600;1,700&display=swap');
+
+
 body{
   text-align: center;
-  font-family: BlinkMacSystemFont,-apple-system,"Segoe UI",Roboto,Oxygen,Ubuntu,Cantarell,"Fira Sans","Droid Sans","Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 600;
+}
+
+h1 {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 700;
+  font-style: italic;
+  font-size: 68px;
+}
+
+h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 600;
+  font-style: bold;
+}
+
+h3 {
+  font-family: 'Cormorant Garamond', serif;
 }
 
 a {
@@ -22,8 +43,9 @@ button {
   color: #363636;
   cursor: pointer;
   display: inline-flex;
-  font-family: BlinkMacSystemFont,-apple-system,"Segoe UI",Roboto,Oxygen,Ubuntu,Cantarell,"Fira Sans","Droid Sans","Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-family: 'Cormorant Garamond', serif;
   font-size: 1rem;
+  font-weight: 600;
   height: 2.5em;
   justify-content: center;
   line-height: 1.5;
