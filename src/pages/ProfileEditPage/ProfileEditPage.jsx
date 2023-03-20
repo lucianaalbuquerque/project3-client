@@ -1,5 +1,4 @@
-import { useState, useEffect } from 'react'
-import axios from 'axios'
+import { useState } from 'react';
 import TextField from '@mui/material/TextField';
 
 function ProfileEditPage() {

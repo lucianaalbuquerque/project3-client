@@ -1,8 +1,9 @@
 import { useState, useContext } from "react";
 import axios from "axios";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { AuthContext } from '../../context/auth.context'
 import TextField from '@mui/material/TextField';
+import { toastError } from "../general/ToastTypes";
 
 function Login() {
   
@@ -27,7 +28,7 @@ function Login() {
       storeToken(response.data.authToken);
       authenticateUser(); 
     } catch (error) {
-      console.log(error)
+      setErrorMessage(error);
     }
   }
   
