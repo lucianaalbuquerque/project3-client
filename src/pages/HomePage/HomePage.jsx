@@ -15,16 +15,16 @@ function HomePage() {
   return (
     <div className="homepage">
       <About />
-      <div className="login">
+      <div className="form">
         {!signupModal ? <>
           <Login />
           <p>Don't have an account yet?</p>
-          <a href='#' onClick={toogleSignup}> Sign Up</a>
+          <span onClick={toogleSignup}> Sign Up</span>
         </>
           : <>
             <Signup setSignupModal={setSignupModal} />
             <p>Already have account?</p>
-            <a href="#" onClick={toogleSignup}> Login</a>
+            <span onClick={toogleSignup}> Login</span>
           </>}
       </div>
     </div>

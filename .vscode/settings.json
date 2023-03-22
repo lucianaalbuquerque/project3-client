@@ -22,7 +22,7 @@
   "prettier.jsxSingleQuote": true,
   "prettier.singleQuote": true,
   "git.confirmSync": false,
-  "window.zoomLevel": 1,
+  "window.zoomLevel": 0,
   "editor.tabSize": 2,
   "editor.minimap.enabled": false,
   "diffEditor.ignoreTrimWhitespace": false,
@@ -41,5 +41,5 @@
   "editor.fontWeight": "normal",
   "editor.fontSize": 12,
   "editor.fontVariations": true,
-  "editor.fontFamily": "Menlo",
+  "editor.fontFamily": "",
 }

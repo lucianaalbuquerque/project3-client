@@ -7,7 +7,7 @@ import Popper from '@mui/material/Popper';
 import MenuItem from '@mui/material/MenuItem';
 import MenuList from '@mui/material/MenuList';
 import Stack from '@mui/material/Stack';
-import { AuthContext } from "../../context/auth.context";
+import { AuthContext } from "../../../context/auth.context";
 import { Link } from "react-router-dom";
 import './Navbar.css'
 
@@ -91,7 +91,7 @@ export default function MenuListComposition() {
                   >
                     <MenuItem onClick={handleClose}><Link to="/profile">Home</Link></MenuItem>
                     <MenuItem onClick={handleClose}><Link to="/profile/edit">My Profile</Link></MenuItem>
-                    <MenuItem onClick={handleClose}><a href={'#'} onClick={logoutUser}>Logout</a></MenuItem>
+                    <MenuItem onClick={handleClose}><a href={'/'} onClick={logoutUser}>Logout</a></MenuItem>
                   </MenuList>
                 </ClickAwayListener>
               </Paper>

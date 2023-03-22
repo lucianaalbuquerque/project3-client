@@ -6,7 +6,7 @@
     margin: 50px;
 }
 
-.login {
+.form {
     display: flex;
     flex-direction: column;
     justify-content: center;
