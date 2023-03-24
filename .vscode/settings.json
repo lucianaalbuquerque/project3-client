@@ -41,5 +41,5 @@
   "editor.fontWeight": "normal",
   "editor.fontSize": 12,
   "editor.fontVariations": true,
-  "editor.fontFamily": "",
+  "editor.fontFamily": "Fira Code",
 }

@@ -1,25 +1,40 @@
 import { useState } from 'react';
 import TextField from '@mui/material/TextField';
+import { Layout } from '../../components/general';
+// import styles from './styles.module.scss';
 
 function ProfileEditPage() {
-  const [description, setDescription] = useState('')
-  const [logoUrl, setLogoUrl] = useState('')
+  const [description, setDescription] = useState('');
+  const [logoUrl, setLogoUrl] = useState('');
 
-  const handleSubmit = (e) => {
-    e.preventDefault()
-  }
+  const handleSubmit = e => {
+    e.preventDefault();
+  };
 
   return (
-    <div className='about'>
-       <h3>Add info about your brand</h3> 
-      <form onSubmit={handleSubmit}>
-        <TextField size="small"  type="text" name="description" placeholder="write about your brand" value={description} onChange={(e) => setDescription(e.target.value)} />
-        <br />
-        <TextField size="small"  type="text" name="logoUrl" placeholder="your logo here" value={logoUrl} onChange={(e) => setLogoUrl(e.target.value)} />
-        <button>Submit</button>
-      </form>
-    </div>
-  )
+    <Layout
+      mainChildren={<h3>Add info about your brand</h3>}
+      sideChildren={
+        <form onSubmit={handleSubmit}>
+          <input
+            type="text"
+            name="description"
+            placeholder="write about your brand"
+            value={description}
+            onChange={e => setDescription(e.target.value)}
+          />
+          <input
+            type="text"
+            name="logoUrl"
+            placeholder="your logo here"
+            value={logoUrl}
+            onChange={e => setLogoUrl(e.target.value)}
+          />
+          <button>Submit</button>
+        </form>
+      }
+    />
+  );
 }
 
-export default ProfileEditPage
+export default ProfileEditPage;

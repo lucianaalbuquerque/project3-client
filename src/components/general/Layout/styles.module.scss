@@ -1,0 +1,31 @@
+@use '../../../styles/mixins.scss' as m;
+@import '../../../styles/variables.scss';
+
+.layout {
+  @include m.flex(column, center);
+  background-color: $backgroundColor;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+
+  .container {
+    @include m.flex(row, center);
+    width: 100%
+  }
+
+  .mainContainer {
+    @include m.flex(column, center);
+    align-items: center;
+    border-right: $line;
+    height: calc(100vh - $navbarHeight - $navbarHeight);
+    width: 70%;
+  }
+
+  .sideContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    height: calc(100vh - $navbarHeight - $navbarHeight);
+    width: 30%;
+  }
+}

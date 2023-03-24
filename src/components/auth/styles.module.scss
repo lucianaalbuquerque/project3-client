@@ -1,0 +1,11 @@
+@use '../../styles/mixins.scss' as m;
+@import '../../styles/variables.scss';
+
+.form {
+  box-sizing: border-box;
+
+  input {
+
+    background-color: transparent;
+  }
+}

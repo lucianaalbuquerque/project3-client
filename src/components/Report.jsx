@@ -7,18 +7,24 @@ import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 
 function Report(props) {
-  const {productList, commission} = props 
+  const { productList, commission } = props;
 
-  let rows = productList.map((product) => {
-    let salePrice = (product.price - (product.price*commission)/100).toFixed(2)
-    return ({ name: product.name, ref: product.ref, salePrice: salePrice, commission, price: product.price })
-  })
+  let rows = productList.map(product => {
+    let salePrice = (product.price - (product.price * commission) / 100).toFixed(2);
+    return {
+      name: product.name,
+      ref: product.ref,
+      salePrice: salePrice,
+      commission,
+      price: product.price,
+    };
+  });
 
-  console.log(rows)
+  console.log(rows);
 
   return (
-    <TableContainer component={Paper} sx={{maxWidth: 650}}>
-      <Table sx={{ maxWidth: 650 }} size="small" aria-label="a dense table">
+    <TableContainer component={Paper} sx={{ maxWidth: 650 }}>
+      <Table sx={{ maxWidth: 650 }} aria-label="a dense table">
         <TableHead>
           <TableRow>
             <TableCell>Name</TableCell>
@@ -29,11 +35,8 @@ function Report(props) {
           </TableRow>
         </TableHead>
         <TableBody>
-          {rows.map((row) => (
-            <TableRow
-              key={row.name}
-              sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
-            >
+          {rows.map(row => (
+            <TableRow key={row.name} sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
               <TableCell component="th" scope="row">
                 {row.name}
               </TableCell>
@@ -46,7 +49,7 @@ function Report(props) {
         </TableBody>
       </Table>
     </TableContainer>
-  )
+  );
 }
 
-export default Report
+export default Report;

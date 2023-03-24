@@ -1,0 +1,27 @@
+@use '../../../styles/mixins.scss' as m;
+@import '../../../styles/variables.scss';
+
+.navbar {
+    @include m.flex(row, flex-start);
+    align-items: center;
+    height: $navbarHeight;
+    width: 100%;
+    border-bottom: $line;
+    padding: 0;
+
+    .navItem1 {
+        @include m.flex(row, flex-start);
+        align-items: center;
+        width: 35%;
+        height: 100%;
+        border-right: $line;
+        padding-left: 20px;
+    }
+
+    .navItem2 {
+        @include m.flex(row, space-around);
+        align-items: center;
+        width: 65%;
+        padding-left: 20px;
+    }
+}

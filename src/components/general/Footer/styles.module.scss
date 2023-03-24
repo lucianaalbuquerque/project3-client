@@ -1,0 +1,10 @@
+@use '../../../styles/mixins.scss' as m;
+@import '../../../styles/variables.scss';
+
+.footer {
+  @include m.flex(row, flex-start);
+  height: $navbarHeight;
+  width: 100vw;
+  border-top: $line;
+  padding-left: 40px;
+}

@@ -1,42 +1,49 @@
 import { useState, useEffect } from 'react';
-import axios from "axios";
-import './ProfilePage.css'
-import { Link } from "react-router-dom";
+import { Link } from 'react-router-dom';
+import axios from 'axios';
+import { Layout } from '../../components/general';
+import styles from './styles.module.scss';
 
 import CatalogueList from '../../components/catalogues/CatalogueList';
 import CreateCatalogueBtn from '../../components/catalogues/CreateCatalogueBtn';
 
 function ProfilePage() {
-  const [catalogueList, setCatalogueList] = useState([])
-  const storedToken = localStorage.getItem("authToken");
+  const [catalogueList, setCatalogueList] = useState([]);
+  const storedToken = localStorage.getItem('authToken');
 
   const getAllCatalogues = () => {
-      axios.get(`${process.env.REACT_APP_API_URL}/catalogues`, 
-      { headers: { Authorization: `Bearer ${storedToken}` } } )
-      .then((response) => setCatalogueList(response.data))
-      .catch((error) => console.log(error));
-  }
+    axios
+      .get(`${process.env.REACT_APP_API_URL}/catalogues`, {
+        headers: { Authorization: `Bearer ${storedToken}` },
+      })
+      .then(response => setCatalogueList(response.data))
+      .catch(error => console.log(error));
+  };
 
   useEffect(() => {
-      getAllCatalogues();
+    getAllCatalogues();
   }, []);
-  
+
   return (
-    <div className="profilePage">
-      <div className="cataloguesHome">
-        <CatalogueList catalogueList={catalogueList} />
-        <CreateCatalogueBtn />
-      </div>
-      <div className='home2'>
-      <div className="cardsHome">
-        <Link to="/products">See all Products</Link>
-      </div>
-      <div className="cardsHome">
-        <Link to="/stockists">See all Stockists</Link>
-      </div>
-      </div>
-    </div>
-  )
+    <Layout
+      mainChildren={
+        <>
+          <CatalogueList catalogueList={catalogueList} />
+          <CreateCatalogueBtn />
+        </>
+      }
+      sideChildren={
+        <div>
+          <div className={styles.tabs}>
+            <Link to="/products">Products</Link>
+          </div>
+          <div className={styles.tabs}>
+            <Link to="/stockists">Stockists</Link>
+          </div>
+        </div>
+      } 
+    />
+  );
 }
 
-export default ProfilePage
+export default ProfilePage;

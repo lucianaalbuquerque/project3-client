@@ -1,0 +1,35 @@
+@mixin flex($direction, $justify) {
+  display: flex;
+  flex-direction: $direction;
+  justify-content: $justify;
+}
+
+@mixin tablet {
+  @media screen and (max-width: 1100px) {
+    @content;
+  }
+}
+
+@mixin tablet-vertical {
+  @media screen and (max-width: 850px) {
+    @content;
+  }
+}
+
+@mixin laptop-vertical {
+  @media screen and (max-height: 850px) {
+    @content;
+  }
+}
+
+@mixin mobile {
+  @media screen and (max-width: 615px) {
+    @content;
+  }
+}
+
+@mixin mobile-small {
+  @media screen and (max-width: 395px) {
+    @content;
+  }
+}

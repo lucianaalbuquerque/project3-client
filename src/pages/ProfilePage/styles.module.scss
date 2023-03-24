@@ -1,0 +1,12 @@
+@use '../../styles/mixins.scss' as m;
+@import '../../styles/variables.scss';
+
+.tabs {
+    @include m.flex(row, center);
+    align-items: center;
+    height: 40px;
+    border-bottom: $line;
+    a {
+        text-decoration: none;
+    }
+}

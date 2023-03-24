@@ -1,12 +1,11 @@
-import './App.css';
+import './styles/globals.scss'
 import { Routes, Route } from "react-router-dom";
 
 
 import IsPrivate from './components/IsPrivate';
 import IsAnon from './components/IsAnon';
 
-import Navbar from './components/general/Navbar';
-import HomePage from './pages/HomePage/HomePage';
+import {HomePage} from './pages/index';
 import ProductPage from './pages/ProductPage/ProductPage';
 import StockistPage from './pages/StockistPage/StockistPage';
 import ProfilePage from './pages/ProfilePage/ProfilePage'
@@ -19,8 +18,6 @@ import ProfileEditPage from './pages/ProfileEditPage/ProfileEditPage';
 function App() {
   return (
     <div className="App">
-      <Navbar />
-
       <Routes>      
         <Route path="/" element={ <IsAnon> <HomePage /> </IsAnon>  } />
         <Route path="/profile" element={ <IsPrivate> <ProfilePage /> </IsPrivate>  } /> 

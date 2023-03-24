@@ -23,7 +23,7 @@ function CreateCatalogueBtn() {
   return (
     <div>
         <form onSubmit={handleCreate}>
-        <button type="submit">Create new catalogue</button>
+        <button type="submit">Create</button>
         </form>
     </div>
   )

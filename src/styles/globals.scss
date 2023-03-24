@@ -1,9 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,600;1,700&display=swap');
 
-body{
+html, body {
   text-align: center;
   font-family: 'Cormorant Garamond', serif;
   font-weight: 600;
+  margin: 0;
+  box-sizing: border-box;
 }
 
 h1 {
@@ -24,8 +26,10 @@ h3 {
 }
 
 a {
-  color:#4a4a4a
+  color:#4a4a4a;
+  text-decoration: none;
 }
+
 a:visited {
   color: #4a4a4a
 }
@@ -99,3 +103,4 @@ button:focus:not(:active) {
     transform: rotate(360deg);
   }
 }
+

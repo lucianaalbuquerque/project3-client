@@ -1,7 +1,8 @@
+@use '../../styles/mixins.scss' as m;
+@import '../../styles/variables.scss';
+
 .stockistPage {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
+    @include m.flex(row, space-around);
     align-items: center;
     margin: 50px;
 }
