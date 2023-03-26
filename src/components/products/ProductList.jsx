@@ -27,7 +27,7 @@ function ProductsList(props) {
   };  
 
   return (
-    <div>
+    <div className="productContainer">
       {products.map((product) => {
         return (
           <div className="productCard" key={product._id} >

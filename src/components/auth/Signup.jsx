@@ -30,7 +30,7 @@ function Signup({ setSignupModal }) {
 
   return (
     <div className={styles.form}>
-      <h2>Signup</h2>
+      <h2 className={styles.bigTab}>Signup</h2>
 
       <form onSubmit={handleSignupSubmit}>
         <input type="email" name="email" value={email} onChange={handleEmail} placeholder="email" />
@@ -48,10 +48,13 @@ function Signup({ setSignupModal }) {
           onChange={handleName}
           placeholder="Brand name"
         />
-        <button type="submit">Sign Up</button>
+        <div className={styles.smallTab}><button type="submit">Submit</button></div>
       </form>
-
-      {errorMessage && <p className="error-message">{errorMessage}</p>}
+      {errorMessage && <div className={styles.smallTab}><p className="error-message">{errorMessage}</p></div>}
+      <div className={styles.smallTab}>
+        <p>Already have an account? {' '}</p>
+        <span onClick={setSignupModal}>Login</span>
+      </div>
     </div>
   );
 }

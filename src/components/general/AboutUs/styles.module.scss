@@ -1,0 +1,13 @@
+@use '../../../styles/mixins.scss' as m;
+@import '../../../styles/variables.scss';
+
+.about {
+  @include m.flex(column, flex);
+  align-items: flex-start;
+  width: 350px;
+  gap: 20px;
+
+  p {
+  text-align: left;
+  }
+}

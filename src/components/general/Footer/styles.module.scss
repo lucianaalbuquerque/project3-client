@@ -3,6 +3,7 @@
 
 .footer {
   @include m.flex(row, flex-start);
+  align-items: center;
   height: $navbarHeight;
   width: 100vw;
   border-top: $line;

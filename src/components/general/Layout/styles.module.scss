@@ -14,11 +14,12 @@
   }
 
   .mainContainer {
-    @include m.flex(column, center);
-    align-items: center;
+    @include m.flex(column, flex-start);
+    align-items: flex-start;
     border-right: $line;
     height: calc(100vh - $navbarHeight - $navbarHeight);
     width: 70%;
+    padding: 20px 40px;
   }
 
   .sideContainer {

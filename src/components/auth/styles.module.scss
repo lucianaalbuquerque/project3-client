@@ -2,10 +2,24 @@
 @import '../../styles/variables.scss';
 
 .form {
-  box-sizing: border-box;
 
   input {
-
-    background-color: transparent;
+    background-color: transparent !important;
+    padding-left: 20px;
+    margin: 0;
   }
+  span {
+    cursor: pointer;
+    margin-left: 2px;
+  }
+}
+
+.bigTab {
+  @include m.flex(row, flex-start);
+  @include m.bigTab();
+}
+
+.smallTab {
+  @include m.flex(row, flex-start);
+  @include m.smallTab();
 }

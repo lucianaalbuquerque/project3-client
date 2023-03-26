@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Layout } from '../../components/general';
 import styles from './styles.module.scss';
 
-import About from '../../components/auth/About';
+import { AboutUs } from '../../components/general';
 import Login from '../../components/auth/Login';
 import Signup from '../../components/auth/Signup';
 
@@ -15,21 +15,13 @@ function HomePage() {
 
   return (
     <Layout
-      mainChildren={<About />}
+      mainChildren={<AboutUs />}
       sideChildren={
         <div className={styles.form}>
           {!signupModal ? (
-            <>
-              <Login />
-              <p>Don't have an account yet?</p>
-              <span onClick={toogleSignup}> Sign Up</span>
-            </>
+            <Login setSignupModal={toogleSignup} />
           ) : (
-            <>
-              <Signup setSignupModal={setSignupModal} />
-              <p>Already have account?</p>
-              <span onClick={toogleSignup}> Login</span>
-            </>
+            <Signup setSignupModal={toogleSignup} />
           )}
         </div>
       }
