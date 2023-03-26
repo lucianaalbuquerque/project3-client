@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import axios from 'axios';
-import TextField from '@mui/material/TextField';
 
 function StockistAddForm(props) {
   const [name, setName] = useState('');
