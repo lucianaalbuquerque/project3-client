@@ -1,0 +1,41 @@
+@use '../../styles/mixins.scss' as m;
+@import '../../styles/variables.scss';
+
+.form {
+
+  input {
+    background-color: none;
+    padding-left: 20px;
+    margin: 0;
+  }
+  /* Cor de fundo do autocomplete */
+  input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 30px $backgroundColor inset;
+  }
+
+  /* Cor do texto do autocomplete */
+  input:-webkit-autofill {
+      -webkit-text-fill-color: $primaryColor !important;
+  }
+
+  span {
+    cursor: pointer;
+    margin-left: 2px;
+  }
+}
+
+.bigTab {
+  @include m.flex(row, flex-start);
+  @include m.bigTab();
+}
+
+.smallTab {
+  @include m.flex(row, center);
+  @include m.smallTab();
+
+  button{
+    border: $line;
+    width: fit-content;
+    height: 18px;
+  }
+}

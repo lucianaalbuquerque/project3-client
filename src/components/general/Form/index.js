@@ -1,9 +1,12 @@
 import React from 'react';
+import styles from './styles.module.scss';
 
-const Form = ({ title, fields, btnText, handleSubmit }) => {
+const Form = ({ title, fields, btnText, handleChange, handleSubmit }) => {
   return (
-    <>
-      <h2>{title}</h2>
+    <div className={styles.form}>
+    <div className={styles.bigTab}>
+      <h2>Login</h2>
+    </div>
       <form onSubmit={handleSubmit}>
         {fields.map(field => (
           <input
@@ -14,9 +17,10 @@ const Form = ({ title, fields, btnText, handleSubmit }) => {
             onChange={field.handleChange}
           />
         ))}
-        <button>{btnText}</button>
+        <div className={styles.smallTab}>
+        <button>{btnText}</button></div>
       </form>
-    </>
+    </div>
   );
 };
 

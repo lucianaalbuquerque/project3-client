@@ -1,10 +1,10 @@
+import { useState, useEffect } from 'react';
+import { Link, useNavigate, useParams } from 'react-router-dom';
+import axios from 'axios';
 import IconButton from '@mui/material/IconButton';
 import DeleteIcon from '@mui/icons-material/Delete';
-
-import './CataloguePages.css';
-import axios from 'axios';
-import { Link, useNavigate, useParams } from 'react-router-dom';
-import { useState, useEffect } from 'react';
+import { Layout } from '../../components/general';
+import styles from './styles.module.scss';
 
 import CreateCoverBtn from '../../components/catalogues/CreateCoverBtn';
 import CreatePageBtn from '../../components/catalogues/CreatePageBtn';
@@ -75,8 +75,7 @@ function CatalogueView() {
   };
 
   return (
-    <div>
-      {catalogue && (
+    <Layout mainChildren={catalogue && (
         <div className="catalogueView">
           {!editTitle ? (
             <div className="formTitle">
@@ -137,8 +136,17 @@ function CatalogueView() {
             <DeleteIcon />
           </IconButton>
         </div>
-      )}
-    </div>
+    )}
+sideChildren = {<>
+      <div className={styles.tabs}>
+        <Link to="/products">Products</Link>
+      </div>
+      <div className={styles.tabs}>
+        <Link to="/stockists">Stockists</Link>
+      </div>
+    </>} 
+    />
+      
   );
 }
 

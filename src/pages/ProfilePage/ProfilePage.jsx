@@ -34,10 +34,10 @@ function ProfilePage() {
       }
       sideChildren={
         <div>
-          <div className={styles.tabs}>
+          <div className={styles.smallTab}>
             <Link to="/products">Products</Link>
           </div>
-          <div className={styles.tabs}>
+          <div className={styles.smallTab}>
             <Link to="/stockists">Stockists</Link>
           </div>
         </div>

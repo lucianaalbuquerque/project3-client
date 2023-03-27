@@ -9,21 +9,17 @@ export default function Navbar() {
   return (
     <navbar className={styles.navbar}>
       <div className={styles.navItem1}>
-        {isLoggedIn && user ? <Link to="/profile/edit">{user.name}</Link> : <p>Catalogue</p>}
+        {isLoggedIn && user ? <Link to="/profile">Home</Link> : <p>Tutorial</p>}
       </div>
       <div className={styles.navItem2}>
         {isLoggedIn ? (
           <>
-            <Link to="/profile">Home</Link>
+            <Link to="/profile/edit">{user.name}</Link>
             <a href={'/'} onClick={logoutUser}>
-              Logout
+              x
             </a>
           </>
-        ) : (
-          <>
-            <p>Example</p>
-          </>
-        )}
+        ) : null}
       </div>
     </navbar>
   );

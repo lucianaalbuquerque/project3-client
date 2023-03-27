@@ -4,7 +4,7 @@ import KeyboardBackspaceIcon from '@mui/icons-material/KeyboardBackspace';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Link, useParams } from 'react-router-dom';
-import './CataloguePages.css';
+import styles from './styles.module.scss';
 
 function CatalogueCover() {
   const [cover, setCover] = useState(null);

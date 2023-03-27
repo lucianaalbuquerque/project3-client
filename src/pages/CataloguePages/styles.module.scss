@@ -1,3 +1,6 @@
+@use '../../styles/mixins.scss' as m;
+@import '../../styles/variables.scss';
+
 .catalogueView {
     display: flex;
     flex-direction: column;
@@ -145,3 +148,14 @@
 .coverTitle {
     position: relative;
 }
+
+.smallTab {
+    @include m.flex(row, center);
+    @include m.smallTab();
+  
+    button{
+      border: $line;
+      width: fit-content;
+      height: 18px;
+    }
+  }
