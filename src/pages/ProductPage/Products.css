@@ -12,7 +12,7 @@ form {
 }
 
 img {
-    width: 80px;
+    width: 120px;
     margin: 5px;
 }
 
@@ -23,12 +23,13 @@ img {
 
 .productCard {
     margin: 10px;
+    padding: 10px;
     display: flex;
     flex-wrap: wrap;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: flex-start;
     align-items: center;
-    box-shadow:rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    background-color: rgba(255, 255, 255, 0.502);
 }
 
 .productCardTxt {
@@ -36,6 +37,6 @@ img {
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    margin: 10px;
-    column-gap: 16px;
+    column-gap: 6px;
 }
+

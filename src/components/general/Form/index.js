@@ -1,18 +1,18 @@
 import React from 'react';
 import styles from './styles.module.scss';
 
-const Form = ({ title, fields, btnText, handleChange, handleSubmit }) => {
+const Form = ({ title, fields, btnText, handleSubmit }) => {
   return (
     <div className={styles.form}>
     <div className={styles.bigTab}>
-      <h2>Login</h2>
+        <h2>{title}</h2>
     </div>
       <form onSubmit={handleSubmit}>
         {fields.map(field => (
           <input
             type="text"
-            name="description"
-            placeholder="write about your brand"
+            name={field.name}
+            placeholder={field.name}
             value={field.description}
             onChange={field.handleChange}
           />

@@ -7,7 +7,7 @@ export default function Footer() {
         Project by{' '}
         <a href="https://www.linkedin.com/in/luciana-pg-albuquerque/" rel="noreferrer" target="_blank">
           Luciana Albuquerque
-        </a>{' '}
+        </a>
       </p>
     </footer>
   );

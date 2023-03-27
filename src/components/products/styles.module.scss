@@ -1,8 +1,7 @@
-@use '../../../styles/mixins.scss' as m;
-@import '../../../styles/variables.scss';
+@use '../../styles/mixins.scss' as m;
+@import '../../styles/variables.scss';
 
 .form {
-
   input {
     background-color: none;
     padding-left: 20px;

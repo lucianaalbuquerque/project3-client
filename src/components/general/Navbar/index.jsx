@@ -15,9 +15,11 @@ export default function Navbar() {
         {isLoggedIn ? (
           <>
             <Link to="/profile/edit">{user.name}</Link>
-            <a href={'/'} onClick={logoutUser}>
-              x
-            </a>
+            <span data-text={"Logout"} class={styles.tooltip}>
+              <a href={'/'} onClick={logoutUser}>
+                x
+              </a>
+            </span>
           </>
         ) : null}
       </div>

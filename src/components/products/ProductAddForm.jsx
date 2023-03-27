@@ -1,6 +1,6 @@
-
 import { useState } from 'react';
 import axios from 'axios';
+import styles from './styles.module.scss';
 
 function ProductAddForm(props) {
   const [name, setName] = useState('');
@@ -39,26 +39,21 @@ function ProductAddForm(props) {
   };
 
   return (
-    <div>
-      <h3>Add Product</h3>
-
+    <div className={styles.form}>
+      <div className={styles.bigTab}>
+        <h2>Add Product</h2>
+      </div>
       <form onSubmit={handleSubmit}>
-        <label>Name:</label>
-        <input type="text" name="name" value={name} onChange={e => setName(e.target.value)} />
-
-        <label>Description:</label>
+        <input type="text" name="name" placeholder="Name" value={name} onChange={e => setName(e.target.value)} />
         <input
           type="text"
           name="description"
+          placeholder="Description"
           value={description}
           onChange={e => setDescription(e.target.value)}
         />
-
-        <label>Retail Price:</label>
-        <input type="number" name="price" value={price} onChange={e => setPrice(e.target.value)} />
-
-        <label>Ref:</label>
-        <input type="number" name="ref" value={ref} onChange={e => setRef(e.target.value)} />
+        <input type="number" name="price" placeholder="Retail Price" value={price} onChange={e => setPrice(e.target.value)} />
+        <input type="number" name="ref" placeholder="Ref" value={ref} onChange={e => setRef(e.target.value)} />
 
         <label>Image:</label>
         <input

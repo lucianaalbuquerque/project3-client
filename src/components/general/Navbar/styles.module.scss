@@ -26,3 +26,22 @@
         gap: 20px;
     }
 }
+
+.tooltip {
+    position:relative; 
+
+    :before {
+        content: 'Logout?'; 
+        position:absolute;
+        top:50%;
+        transform:translateY(-50%);
+        left:100%;
+        padding:20px;
+        text-align:center;
+        color: $primaryColor;
+        display:none; 
+      }
+      :hover:before {
+        display:block;
+      }
+  }

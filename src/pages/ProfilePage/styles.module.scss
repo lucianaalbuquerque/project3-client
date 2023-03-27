@@ -1,7 +1,7 @@
 @use '../../styles/mixins.scss' as m;
 @import '../../styles/variables.scss';
 
-.tabs {
+.smallTab {
     @include m.flex(row, center);
     align-items: center;
     height: 40px;
