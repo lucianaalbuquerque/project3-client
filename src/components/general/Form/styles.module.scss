@@ -33,7 +33,7 @@
   @include m.flex(row, center);
   @include m.smallTab();
 
-  button{
+  button {
     border: $line;
     width: fit-content;
     height: 18px;

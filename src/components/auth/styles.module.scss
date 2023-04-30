@@ -38,4 +38,10 @@
     width: fit-content;
     height: 18px;
   }
+
+  @include m.mobile {
+    flex-direction: column;
+    height: fit-content;
+    padding: 6px 0;
+  }
 }

@@ -10,4 +10,13 @@
   p {
   text-align: left;
   }
+
+  @include m.mobile {
+    width: 100%;
+    
+    h1 {
+      font-size: 42px;
+      margin: 16px 0;
+    }
+  }
 }
